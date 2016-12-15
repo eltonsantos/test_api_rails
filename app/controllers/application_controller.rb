@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::API
   include ActionController::Serialization
-
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
   # Add a before_action to authenticate all requests.
@@ -25,5 +24,5 @@ class ApplicationController < ActionController::API
     self.headers["WWW-Authenticate"] = %(Token realm="#{realm.gsub(/"/, "")}")
     render json: 'Bad credentials', status: :unauthorized
   end
-  
+
 end
